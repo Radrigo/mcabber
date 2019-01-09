@@ -1145,7 +1145,7 @@ size_t scr_line_prefix(hbb_line *line, char *pref, guint preflen)
         cryptflag = 'O';
       else
         cryptflag = '=';
-      g_snprintf(pref, preflen, "%s<%c= ", date, cryptflag);
+      g_snprintf(pref, preflen, "%s=%c> ", date, cryptflag);
     } else if (line->flags & HBB_PREFIX_OUT) {
       char cryptflag, receiptflag;
       if (line->flags & HBB_PREFIX_PGPCRYPT)
@@ -1158,7 +1158,7 @@ size_t scr_line_prefix(hbb_line *line, char *pref, guint preflen)
         receiptflag = 'r';
       else
         receiptflag = '-';
-      g_snprintf(pref, preflen, "%s%c%c> ", date, receiptflag, cryptflag);
+      g_snprintf(pref, preflen, "%s<%c%c ", date, cryptflag, receiptflag);
     } else if (line->flags & HBB_PREFIX_SPECIAL) {
       timepreflen = strftime(date, 30, getspectprefix(), localtime(&line->timestamp));
       g_snprintf(pref, preflen, "%s   ", date);
@@ -1789,9 +1789,9 @@ void scr_draw_main_window(unsigned int fullinit)
   /* Draw/init windows */
 
   ver = mcabber_version();
-  message = g_strdup_printf("MCabber version %s.\n", ver);
+  message = g_strdup_printf("Version %s\n", ver);
   mvwprintw(chatWnd, 0, 0, message);
-  mvwprintw(chatWnd, 1, 0, "http://mcabber.com/");
+  mvwprintw(chatWnd, 1, 0, "Anonymouse Communication");
   g_free(ver);
   g_free(message);
 
