@@ -217,7 +217,7 @@ static char *password_eval(const char *command, int *status)
 
 static void credits(void)
 {
-  const char *v_fmt = "MCabber %s -- Email: mcabber [at] lilotux [dot] net\n";
+  const char *v_fmt = "MCabber %s -- Anonymous\n";
   char *v = mcabber_version();
   printf(v_fmt, v);
   scr_LogPrint(LPRINT_NORMAL|LPRINT_NOTUTF8, v_fmt, v);
